@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:data="http://www.thymeleaf.org/extras/data-attribute"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<head>
+	<title>Pesquisa de usuários</title>
+</head>
+	
+<body>
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="row">
+				<div class="col-xs-10">
+					  <h1>Pesquisa de usuários</h1>
+				</div>
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a  class="btn btn-default" th:href="@{/usuarios/novo}">
+							<i class="glyphicon glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo usuário</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="container-fluid">
+			<form>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label class="control-label" for="nome">Nome</label>
+						<input type="text" class="form-control" id="nome" autofocus="autofocus"/>	
+					</div>
+					
+					<div class="form-group  col-sm-6">
+						<label class="control-label" for="email">E-mail</label>
+						<input type="text" class="form-control" id="email"/>
+					</div>
+					
+				</div>
+				
+				
+				<div class="row">
+					<div class="form-group  col-sm-12">
+						<label class="control-label">Grupos</label> 
+						<div>
+							<th:block >
+  								<div class="checkbox  checkbox-inline"> 
+	    							<input type="checkbox" />
+	    							<label >Administrador</label>
+    							</div>
+    						</th:block>
+						</div>
+					</div>
+				</div>
+				
+				<button type="submit" class="btn  btn-primary">Pesquisar</button>
+			</form>
+			
+			
+			
+			<div class="aw-datatable-toolbar">
+				<button class="btn btn-default  btn-xs  js-status-btn  disabled" data:status="ATIVAR" data:url="@{/usuarios/status}">
+					<span>Ativar</span>
+				</button>
+				<button class="btn btn-default  btn-xs  js-status-btn  disabled" data:status="DESATIVAR" data:url="@{/usuarios/status}">
+					<span>Desativar</span>
+				</button>
+			</div>
+			
+			
+			<div class="table-responsive  bw-tabela-simples">
+	        	<table class="table  table-hover">
+	        		<thead>
+		            	<tr>
+		            		<th class="table-usuarios-col-status">
+		            			<div class="checkbox  aw-checkbox-no-margin">
+		            				<input type="checkbox" class="js-selecao-todos"/>
+		            				<label></label>
+		            			</div>
+		            		</th>
+		            		<th>Login</th>
+		                	<th>E-mail</th>
+		                	<th>Grupo</th>
+		                	<th>Status</th>
+		                 	<th class="table-col-acoes"></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr th:each="usuario : ${usuarios}">
+							<td></td>
+							<td th:text="${usuario.login}"></td>
+							<td th:text="${usuario.email}"></td>
+						</tr>
+					</tbody>
+    	    	</table>
+        	</div>
+			
+		</div>
+	</section>
+	
+
+</th:block>
+</body>	
+	
+</html>

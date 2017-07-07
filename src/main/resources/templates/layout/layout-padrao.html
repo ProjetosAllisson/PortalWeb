@@ -91,7 +91,7 @@
 		          </a>
 		
 		          <ul class="aw-menu__list  aw-menu__list--sublist">
-		            <li class="aw-menu__item  aw-menu__item--link"><a href="pagina-vazia.html"><i class="fa fa-fw fa-users"></i><span>  Todos usuários</span></a></li>
+		            <li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/${tenant}/usuarios}"><i class="fa fa-fw fa-users"></i><span>  Todos usuários</span></a></li>
 		            <li class="aw-menu__item  aw-menu__item--link"><a href="login.html"><i class="fa fa-fw fa-key"></i><span>Autorizar usuário(s)</span> </a></li>
 		            
 		            
@@ -110,7 +110,8 @@
 	
 	<footer class="aw-layout-footer  js-content">
 		<div class="container-fluid">
-			<span class="aw-footer-disclaimer">&copy; 2016 AlgaWorks. Todos os direitos reservados.</span>
+		<div class="aw-box__value">[[${{tenant}}]]-@{/${tenant}/usuarios}</div>
+			<span class="aw-footer-disclaimer">&copy; 2017 AlgaWorks. Todos os direitos reservados.</span>
 		</div>
 	</footer>
 
